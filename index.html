@@ -1,4 +1,50 @@
+<?php
+// ======== DATABASE CONNECTION ========
+$conn = new mysqli("localhost", "root", "", "ramos_db");
+if ($conn->connect_error) {
+  die("Database connection failed: " . $conn->connect_error);
+}
 
+// ======== FETCH EVENTS ========
+$query = "SELECT * FROM events ORDER BY event_date ASC";
+$result = $conn->query($query);
+?>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Municipality of Ramos — Official Site</title>
+  <meta name="description" content="Official website of the Municipality of Ramos — Sangguniang Bayan, ordinances, services, and updates." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg:#eef3ff;
+      --card:#ffffffd0;
+      --muted:#6b7280;
+      --accent:#0b5ed7;
+      --radius:18px;
+      --shadow:0 8px 25px rgba(0,0,0,0.08);
+      --gradient:linear-gradient(135deg,#0b5ed7,#007bff,#00a2ff);
+    }
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(180deg, var(--bg), #3431f5ff);
+  color: #111827;
+  line-height: 1.45;
+  background-attachment: fixed;
+  background-image:
+    radial-gradient(circle at top left, rgba(10, 102, 241, 0.15)),
+    radial-gradient(circle at bottom right, rgba(1, 17, 87, 0.12));
+}
+
+/* make everything fill full width */
+.container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
   padding: 0;
 }
 
